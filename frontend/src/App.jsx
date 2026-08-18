@@ -21,6 +21,18 @@ function App() {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3000);
   };
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "dark"
+  );
+  
+  useEffect(() => {
+    document.body.className = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+  
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   const loadTranscriptions = useCallback(async () => {
     setLoading(true);
@@ -61,6 +73,17 @@ function App() {
         <div className="header-content">
           <h1>Speech to Text</h1>
           <p className="subtitle">Real-time Multilingual Transcription Service</p>
+        </div>
+
+        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
+          </button>
+
+          <div className={`status-badge ${backendStatus}`}>
+            <span className="status-dot"></span>
+            Backend: {backendStatus}
+          </div>
         </div>
         <div className={`status-badge ${backendStatus}`}>
           <span className="status-dot"></span>
