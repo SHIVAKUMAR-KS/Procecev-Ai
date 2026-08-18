@@ -11,7 +11,7 @@
 
 ---
 
-## 🌟 Key Features
+## 🌟 Key Features for Speech-to-text
 
 - 🎙️ **Real-Time Live Speech-to-Text**: Low-latency, streaming live transcription powered by the browser Web Speech API (no third-party paid API keys required).
 - ⚡ **Intelligent Hinglish / Bilingual Normalizer**:
